@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For You — A Little Love Letter</title>
+  <style>
+    :root{
+      --bg:#fff0f6;
+      --card:#ffffff;
+      --accent:#ff6b9a;
+      --text:#47203a;
+      --muted:#7b5a68;
+      --glass: rgba(255,255,255,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(circle at 10% 20%, #fff6f9 0%, var(--bg) 30%), linear-gradient(135deg,#ffeef4 0%, #fff 60%);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2rem;
+    }
+
+    .card{
+      width:100%;
+      max-width:760px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), var(--card));
+      border-radius:18px;
+      padding:2rem;
+      box-shadow:0 10px 30px rgba(96,30,70,0.12);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .header{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+    }
+
+    .heart{
+      width:72px;height:72px;
+      display:grid;place-items:center;
+      transform-origin:center;
+      animation:beat 1s infinite;
+    }
+
+    @keyframes beat{
+      0%{transform:scale(1)}
+      25%{transform:scale(1.12)}
+      50%{transform:scale(1)}
+      75%{transform:scale(1.06)}
+      100%{transform:scale(1)}
+    }
+
+    .title{
+      font-size:1.6rem;
+      margin:0;
+      line-height:1.05;
+    }
+
+    .subtitle{color:var(--muted);font-size:0.95rem}
+
+    .letter{
+      margin-top:1.25rem;
+      font-size:1.05rem;
+      line-height:1.6;
+      background:linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,245,250,0.4));
+      padding:1.25rem;
+      border-radius:12px;
+      border:1px solid rgba(200,150,170,0.12);
+    }
+
+    .signature{
+      margin-top:1.25rem;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:0.75rem;
+    }
+
+    .from{font-family: 'Brush Script MT', cursive, system-ui; font-size:1.25rem; color:var(--accent)}
+
+    .btn{
+      margin-top:1rem;
+      display:inline-block;
+      text-decoration:none;
+      border-radius:999px;
+      padding:0.55rem 0.9rem;
+      border:2px solid var(--accent);
+      color:var(--accent);
+      font-weight:600;
+      transition:all .18s ease;
+    }
+    .btn:hover{background:var(--accent);color:white;transform:translateY(-3px)}
+
+    /* little floating hearts */
+    .floaters{position:absolute;inset:0;pointer-events:none;}
+    .floaters i{position:absolute;width:14px;height:14px;opacity:.85;transform:translate3d(0,0,0)}
+
+    @media (max-width:520px){
+      .header{gap:.5rem}
+      .title{font-size:1.25rem}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="header">
+      <div class="heart" aria-hidden>
+        <!-- svg heart -->
+        <svg viewBox="0 0 24 24" width="56" height="56" fill="none" aria-hidden>
+          <path d="M12 21s-7.5-4.35-9.12-6.02C-0.32 11.63 3.1 6 8.5 6c2.14 0 3.84 1.04 4.5 2.44C13.66 7.04 15.36 6 17.5 6c5.4 0 8.82 5.63 5.62 8.98C19.5 16.65 12 21 12 21z" fill="var(--accent)"></path>
+        </svg>
+      </div>
+      <div>
+        <h1 class="title">PARA SAYO TO KRISTINE DRAGON</h1>
+        <div class="subtitle"></div>
+      </div>
+    </div>
+
+    <article class="letter">
+      <p>to my baby the one who makes me feel so speacial,</p>
+
+      <p>First of all kristine, thankyou for being so thoughful and caring. Thank you for talking to me when i needed someone to talk 
+      to. Thankyou for listening to me and understanding me. Thankyou for just being there. Thank you for taking the time out of your
+    day to show me how much you care. Thank you for spending time with. for making time for me even in your busy days.</p>
+
+      <p>and Thank you for staying with me even at my worst when I’m moody, insecure, or difficult to deal with.
+       and when I’m not easy to love pero nandyan ka pa rin. 
+      I appreciate your patience, your understanding, and your love. You make me feel safe, accepted, and truly loved. Being with you motivates me to be better, to try harder, and to love more openly every day. I love you more than words.</p>
+
+      <p>And now this is the moment i've been waiting for, the moment i've been thinking about for so long. love na love na loveeee 
+      kita kristine ko sobrang loveee kita nahihiya ako sabihin sayo to in person kaya dito ko nalang ipapakita Can i court you??</p>
+
+      <div class="signature">
+        <div class="from">your baby pj</div>
+      </div>
+
+      <a class="btn" href="#" onclick="alert('Muah! 💋'); return false;">Send a kiss</a>
+    </article>
+
+    <div class="floaters" aria-hidden>
+      <!-- decorative floating hearts placed with JS -->
+    </div>
+  </main>
+
+  <script>
+    // add a few floating hearts for charm
+    const floaters = document.querySelector('.floaters');
+    const colors = ['#ff6b9a','#ff9db3','#ffb6c9'];
+    for(let i=0;i<12;i++){
+      const el = document.createElement('i');
+      const size = 8 + Math.random()*18;
+      el.style.width = size+'px';
+      el.style.height = size+'px';
+      el.style.left = (Math.random()*100)+'%';
+      el.style.top = (Math.random()*100)+'%';
+      el.style.opacity = 0.6 + Math.random()*0.4;
+      el.style.transform = 'translateY(0)';
+      el.innerHTML = '\u2665';
+      el.style.fontSize = size+'px';
+      el.style.color = colors[Math.floor(Math.random()*colors.length)];
+      el.style.animation = `float${i} ${(6 + Math.random()*6).toFixed(1)}s ease-in-out infinite`;
+      floaters.appendChild(el);
+
+      const keyframes = `@keyframes float${i}{ 0%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-40px) rotate(12deg)} 100%{transform:translateY(0) rotate(0deg)} }`;
+      const style = document.createElement('style');
+      style.textContent = keyframes;
+      document.head.appendChild(style);
+    }
+  </script>
+</body>
+</html>
